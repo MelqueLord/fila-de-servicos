@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2563eb" />
+    <title>Fila de Serviços</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon-192.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topo">
+        <div>
+          <p class="marca">FILA DE SERVIÇOS</p>
+          <h1>Ordens de serviço</h1>
+          <p class="subtitulo">Acompanhe tudo de forma simples.</p>
+        </div>
+        <a class="botao-primario" href="#cadastro">+ Nova ordem</a>
+      </header>
+
+      <section class="cadastro" id="cadastro" aria-labelledby="titulo-cadastro">
+        <div class="cabecalho-secao">
+          <h2 id="titulo-cadastro">Cadastrar serviço</h2>
+          <p>Preencha os dados para abrir uma ordem.</p>
+          <p class="aviso-local">Os dados ficam salvos somente neste navegador.</p>
+        </div>
+        <form id="form-servico">
+          <div class="campos-duplos">
+            <label>Cliente
+              <input name="cliente" type="text" autocomplete="name" required />
+            </label>
+            <label>Telefone
+              <input name="telefone" type="tel" autocomplete="tel" required />
+            </label>
+          </div>
+          <label>Aparelho
+            <input name="aparelho" type="text" required />
+          </label>
+          <label>Problema
+            <textarea name="problema" rows="3" required></textarea>
+          </label>
+          <label>Observações
+            <textarea name="observacoes" rows="2"></textarea>
+          </label>
+          <label>Status
+            <select name="status" required>
+              <option>Recebido</option>
+              <option>Em andamento</option>
+              <option>Pronto</option>
+              <option>Entregue</option>
+            </select>
+          </label>
+          <div class="acoes-formulario">
+            <button class="botao-salvar" id="botao-salvar" type="submit">Cadastrar serviço</button>
+            <button class="botao-cancelar" id="botao-cancelar" type="button" hidden>Cancelar edição</button>
+          </div>
+          <p class="mensagem" id="mensagem" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="busca" aria-label="Busca e filtro">
+        <label for="buscar">Buscar ordem</label>
+        <input id="buscar" type="search" placeholder="Cliente ou aparelho" />
+        <div class="filtros" aria-label="Filtrar por status">
+          <button class="filtro ativo" type="button" data-status="Todas" aria-pressed="true">Todas</button>
+          <button class="filtro" type="button" data-status="Recebido" aria-pressed="false">Recebido</button>
+          <button class="filtro" type="button" data-status="Em andamento" aria-pressed="false">Em andamento</button>
+          <button class="filtro" type="button" data-status="Pronto" aria-pressed="false">Pronto</button>
+          <button class="filtro" type="button" data-status="Entregue" aria-pressed="false">Entregue</button>
+        </div>
+      </section>
+
+      <section class="resumo" aria-label="Resumo das ordens">
+        <article><span>Recebidos</span><strong id="contador-recebido">0</strong></article>
+        <article><span>Em andamento</span><strong id="contador-andamento">0</strong></article>
+        <article><span>Prontos</span><strong id="contador-pronto">0</strong></article>
+        <article><span>Entregues</span><strong id="contador-entregue">0</strong></article>
+      </section>
+
+      <section class="lista" aria-labelledby="titulo-lista">
+        <div class="cabecalho-lista">
+          <h2 id="titulo-lista">Ordens recentes</h2>
+          <span id="total-ordens">0 ordens</span>
+        </div>
+        <div id="lista-ordens"></div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => navigator.serviceWorker.register("service-worker.js"));
+      }
+    </script>
+  </body>
+</html>

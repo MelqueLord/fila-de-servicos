@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Fila de Serviços</title>
+  <rect width="512" height="512" rx="112" fill="#2563eb"/>
+  <path d="M144 131h224v250H144z" fill="#fff" opacity=".96"/>
+  <path d="M187 211h138M187 270h138M187 329h83" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-width="27"/>
+  <circle cx="355" cy="352" r="64" fill="#16a34a"/>
+  <path d="m326 352 21 21 40-48" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="19"/>
+</svg>
